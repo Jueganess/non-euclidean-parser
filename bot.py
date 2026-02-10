@@ -58,7 +58,15 @@ async def welcome(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Si entran varios a la vez, manda 1 solo mensaje
     nombres = [u.first_name for u in update.message.new_chat_members]
     lista = ", ".join(nombres)
-
+    
+    logger.info(
+        "Nuevo usuario en %s (%s): %s (%s)",
+        chat.title,
+        chat.id,
+        u.full_name,
+        u.id
+    )
+    
     await msg.reply_text(
         f"👋 ¡Bienvenid@s {lista}!\n\n" + WELCOME_TEXT
     )
@@ -66,6 +74,9 @@ async def welcome(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # comando /prueba -> simula bienvenida
 async def prueba(update: Update, context: ContextTypes.DEFAULT_TYPE):
     nombre = update.effective_user.first_name
+    logger.info(
+        "prueba de %s",nombre
+    )
     await update.effective_message.reply_text(
         f"👋 ¡Hola {nombre}!\n\n"  # + WELCOME_TEXT
     )

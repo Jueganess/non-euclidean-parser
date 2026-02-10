@@ -67,7 +67,7 @@ async def welcome(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def prueba(update: Update, context: ContextTypes.DEFAULT_TYPE):
     nombre = update.effective_user.first_name
     await update.effective_message.reply_text(
-        f"👋 ¡Bienvenido/a {nombre}!\n\n" + WELCOME_TEXT
+        f"👋 ¡Hola {nombre}!\n\n"  # + WELCOME_TEXT
     )
 
 async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE) -> None:
